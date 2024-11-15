@@ -29,7 +29,7 @@ class MainWindow(QMainWindow):
 
         button_action = QAction(
             QIcon(os.path.join(os.path.dirname(__file__), "bug.png")),
-            "Your button",
+            "&Your button",
             self,
         )
         button_action.setStatusTip("This is yout button")
@@ -38,11 +38,13 @@ class MainWindow(QMainWindow):
 
         toolbar.addAction(button_action)
 
+        toolbar.addSeparator()
+
         button_action2 = QAction(
             QIcon(
                 os.path.join(os.path.dirname(__file__), "application-plus-black.png")
             ),
-            "Your button",
+            "Your &button2",
             self,
         )
         button_action2.setStatusTip("This is your button2")
@@ -55,6 +57,11 @@ class MainWindow(QMainWindow):
         toolbar.addWidget(QCheckBox())
 
         self.setStatusBar(QStatusBar(self))
+
+        menu = self.menuBar()
+
+        file_menu = menu.addMenu("&File")
+        file_menu.addAction(button_action)
 
     def onMyToolBarButtonClick(self, s):
         print("click", s)

@@ -1,7 +1,7 @@
 import os
 
 from PySide6.QtCore import QSize
-from PySide6.QtGui import QAction, QIcon, Qt
+from PySide6.QtGui import QAction, QIcon, QKeySequence, Qt
 from PySide6.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -29,20 +29,23 @@ class MainWindow(QMainWindow):
 
         button_action = QAction(
             QIcon(os.path.join(os.path.dirname(__file__), "bug.png")),
-            "Your button",
+            "&Your button",
             self,
         )
         button_action.setStatusTip("This is yout button")
         button_action.setCheckable(True)
         button_action.triggered.connect(self.onMyToolBarButtonClick)
+        button_action.setShortcut(QKeySequence("Ctrl+p"))
 
         toolbar.addAction(button_action)
+
+        toolbar.addSeparator()
 
         button_action2 = QAction(
             QIcon(
                 os.path.join(os.path.dirname(__file__), "application-plus-black.png")
             ),
-            "Your button",
+            "Your &button2",
             self,
         )
         button_action2.setStatusTip("This is your button2")
@@ -55,6 +58,15 @@ class MainWindow(QMainWindow):
         toolbar.addWidget(QCheckBox())
 
         self.setStatusBar(QStatusBar(self))
+
+        menu = self.menuBar()
+
+        file_menu = menu.addMenu("&File")
+        file_menu.addAction(button_action)
+        file_menu.addSeparator()
+
+        file_submenu = file_menu.addMenu("Submenu")
+        file_submenu.addAction(button_action2)
 
     def onMyToolBarButtonClick(self, s):
         print("click", s)
