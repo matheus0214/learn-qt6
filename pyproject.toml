@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "learn pyside6"
+version = "0.1.0"
+description = "Project to learn how to create python gui"
+authors = ["Matheus G. Dias <matheusgiga123@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+ruff = "^0.8.0"
+
+[tool.ruff]
+select = ["D"]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.14"
+pyside6 = "^6.8.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
