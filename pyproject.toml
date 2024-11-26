@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "learn pyside6"
+name = "learn_pyside6"
 version = "0.1.0"
 description = "Project to learn how to create python gui"
 authors = ["Matheus G. Dias <matheusgiga123@gmail.com>"]
